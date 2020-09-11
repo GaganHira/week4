@@ -1,0 +1,23 @@
+<div class="loginForm">
+        <h2>Login to your account</h2>
+        <form  #loginForm="ngForm">
+      
+          <input type="text"   [(ngModel)]= "name" name = "name" /> <br>
+          <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" password = "password" /> <br>
+          <br>
+          <button  type= "submit" type="button" (click) = "itemClicked()">Submit</button> <br> <br>
+         
+          <a class="forgot"  href="#">Forgot Username?</a>
+        </form>
+      </div><!--end log form -->
+
+<div>    
+    <p>Username and passwords  </p><br>
+    <ul>
+        <li><a [routerLink] = "['/login' , gagan]">Gagan</a></li>
+        <li><a [routerLink] = "['/login' , preet]">preet</a></li>
+        <li><a [routerLink] = "['/login' , singh]">singh</a></li> 
+    </ul>
+</div>  
+
+<router-outlet></router-outlet>
