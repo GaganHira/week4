@@ -24,18 +24,21 @@ export class LoginComponent implements OnInit {
     this.paramsub = this.route.paramMap.subscribe(params => {
       this.name = params.get('name');
       this.password = params.get('password');
+      
     });
   }
 
   itemClicked() {
 
     let users = [{ 'name': 'abc@com.au', 'password': '123' }, { 'name': 'abd@com.au', 'password': '123' }, { 'name': 'abe@com.au', 'password': '123' }];
+    
     this.valid = false;
     for (let i = 0; i < users.length; i++) {
       if (this.name == users[i].name && this.password == users[i].password) {
         this.valid =true;
         this.router.navigate(['/accont/',this.valid]);
-      } else  {
+      } else {
+        this.valid = false;
         alert("Wrong password")
       }
     }
