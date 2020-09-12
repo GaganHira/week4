@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';   
+import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from "../users";
@@ -13,43 +13,32 @@ import { Users } from "../users";
 })
 export class LoginComponent implements OnInit {
 
-  name = "";
-  password = "";
-  val = false;
+  name = '';
+  password = '';
+  valid = false;
   paramsub;
-  
-  
-  constructor(private route: ActivatedRoute, private router:Router) { 
-    
-  }
+
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    
-    
     this.paramsub = this.route.paramMap.subscribe(params => {
       this.name = params.get('name');
-      this.password = params.get('password');     
-});
+      this.password = params.get('password');
+    });
   }
- valid() {
 
-  let users = [{'name': 'abc@com.au', 'password': '123'},{'name': 'abd@com.au', 'password': '123'},{'name': 'abe@com.au', 'password': '123'}];
-      
-  for (let i = 0;i<users.length;i++) {
-    if(this.name == users[i].name && this.password == users[i].password) {
-      
-  }
-}
- }
-  itemClicked(valid:boolean) {
-    
-    if (this.itemClicked = this.valid) {
-      this.router.navigate(['/accont/' + valid]);
-      console.log()
-    } else {
-      alert("Wrong password")
+  itemClicked() {
+
+    let users = [{ 'name': 'abc@com.au', 'password': '123' }, { 'name': 'abd@com.au', 'password': '123' }, { 'name': 'abe@com.au', 'password': '123' }];
+    this.valid = false;
+    for (let i = 0; i < users.length; i++) {
+      if (this.name == users[i].name && this.password == users[i].password) {
+        this.valid =true;
+        this.router.navigate(['/accont/',this.valid]);
+      } else  {
+        alert("Wrong password")
+      }
     }
-   
   }
-
 }
+
